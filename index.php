@@ -7,8 +7,10 @@
         mysqli_query($connection,"DELETE FROM `users` WHERE `id` =".$_GET['delete']);
     }
     var_dump($_POST);
-    mysqli_query($connection,"UPDATE `users` SET `name` = ".$_POST['name'].", `lastname` = ".$_POST['lastname'].", `status` = ".$_POST['status'].", `role` = ".$_POST['role']." WHERE `id` = 10");
-
+    echo $_POST['name'];
+    if(isset($_POST['edit_post'])){
+    mysqli_query($connection,"UPDATE `users` SET `name` = '".$_POST['name']."', `lastname` = '".$_POST['lastname']."', `status` = '".$_POST['status']."', `role` = '".$_POST['role']."' WHERE `id` =  ".$_POST['id']) or die(mysqli_error($connection));
+    }
     ?>
     <meta charset="utf-8">
     <title>Panel</title>
@@ -19,6 +21,19 @@
 <body>
 <?php include "./includes/modal.php" ?>
 <hr>
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-box no-header clearfix">
+                <div class="main-box-body clearfix">
+                    <button type="button" class="btn btn-primary">Primary</button>
+                    <button type="button" class="btn btn-primary">Primary</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container bootstrap snippets bootdey">
     <div class="row">
         <div class="col-lg-12">
@@ -51,20 +66,20 @@
                                     </td>
                                     <td class="text-center">
                                         <span class="fa-stack">
-                                            <i class="fa fa-circle <?php if($user['status'] = 0) echo "gray"; else echo "green"; ?>"></i>
+                                            <i class="fa fa-circle <?php if($user['status'] == 'on') echo "green"; else echo "gray"; ?>"></i>
                                         </span>
                                     </td>
                                     <td class="text-center">
                                         <a href="#"><?php echo $user['role']; ?></a>
                                     </td>
                                     <td class="text-center" style="width: 20%;">
-                                        <a id="<?php echo $user['id'] ?>" data-toggle="modal" data-target="#exampleModalCenter" class="table-link text-info edit-item">
+                                        <a id="<?php echo $user['id'] ?>" data-toggle="modal" data-target="#ModalAdd" class="table-link text-info edit-item">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
                                         </a>
-                                        <a id="<?php echo $user['id'] ?>" data-toggle="modal" data-target="#exampleModalCenter" class="table-link danger delete-item">
+                                        <a id="<?php echo $user['id'] ?>" data-toggle="modal" data-target="#ModalConfirm" class="table-link danger delete-item">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-trash-o fa-stack-1x fa-inverse del"></i>
@@ -87,6 +102,6 @@
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="./includes/main.js" type="text/javascript">
+<script src="./includes/main.js" type="text/javascript"></script>
 </body>
 </html>
