@@ -12,7 +12,7 @@
             <div class="form__group">
                 <div class="row">
                   <div class="col-md-6" style = " display:none;">
-                    <input type="text" class="form__control Add-item" required name="id" value = ""> 
+                    <input type="text" class="form__control edit-item" name="id" value = ""> 
                   </div>
                   <div class="col-md-6" style="margin-top:10px;">
                     <input type="text" class="form__control" required name="name" placeholder="Name"> 
@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button name="edit_post" type="submit" class="btn btn-primary btn-save-changes">Save changes</button>
+            <button name="edit_post" type="submit" class="btn btn-primary btn-save-changes btn-modal-add-edit">Save changes</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </form>

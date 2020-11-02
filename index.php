@@ -2,16 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php
-    if (isset($_GET['delete'])) {
-        mysqli_query($connection,"DELETE FROM `users` WHERE `id` =".$_GET['delete']);
-    }
-    var_dump($_POST);
-    echo $_POST['name'];
-    if(isset($_POST['edit_post'])){
-    mysqli_query($connection,"UPDATE `users` SET `name` = '".$_POST['name']."', `lastname` = '".$_POST['lastname']."', `status` = '".$_POST['status']."', `role` = '".$_POST['role']."' WHERE `id` =  ".$_POST['id']) or die(mysqli_error($connection));
-    }
-    ?>
+    <?php include "./includes/get_post.php"; ?>
     <meta charset="utf-8">
     <title>Panel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,9 +17,14 @@
         <div class="col-lg-12">
             <div class="main-box no-header clearfix">
                 <div class="main-box-body clearfix">
-                    <button type="button" class="btn btn-primary">Primary</button>
-                    <button type="button" class="btn btn-primary">Primary</button>
-
+                    <button type="button" class="btn btn-primary btn-add-item" data-toggle="modal" data-target="#ModalAdd">Add</button>
+                    <select class="btn btn-primary select-action">
+                      <option>Please select</option>
+                      <option>Set active</option>
+                      <option>Set not active</option>
+                      <option>Delete</option>
+                    </select>
+                    <button type="button" data-toggle="modal" data-target="#ModalConfirm" class="btn btn-primary btn-ok">OK</button>
                 </div>
             </div>
         </div>
@@ -59,7 +55,7 @@
                             ?>
                                 <tr>
                                     <td class="text-center">
-                                        <input type="checkbox" id="scales" name="scales" checked />
+                                        <input type="checkbox" id="<?php echo $user['id']?>" name="scales" class="checkout" />
                                     </td>
                                     <td>
                                         <a href="#" class="user-link"><?php echo $user['name']; ?> <?php echo $user['lastname']; ?></a>
@@ -93,6 +89,24 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-box no-header clearfix">
+                <div class="main-box-body clearfix">
+                    <button type="button" class="btn btn-primary btn-add-item" data-toggle="modal" data-target="#ModalAdd">Add</button>
+                    <select class="btn btn-primary select-action">
+                      <option>Please select</option>
+                      <option>Set active</option>
+                      <option>Set not active</option>
+                      <option>Delete</option>
+                    </select>
+                    <button type="button" data-toggle="modal" data-target="#ModalConfirm" class="btn btn-primary btn-ok">OK</button>
                 </div>
             </div>
         </div>
