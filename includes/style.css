@@ -1,129 +1,146 @@
-body{
-    background:#eee;    
+body {
+	background: #eee;
 }
+
 .main-box.no-header {
-    padding-top: 20px;
+	padding-top: 20px;
 }
+
 .main-box {
-    background: #FFFFFF;
-    -webkit-box-shadow: 1px 1px 2px 0 #CCCCCC;
-    -moz-box-shadow: 1px 1px 2px 0 #CCCCCC;
-    -o-box-shadow: 1px 1px 2px 0 #CCCCCC;
-    -ms-box-shadow: 1px 1px 2px 0 #CCCCCC;
-    box-shadow: 1px 1px 2px 0 #CCCCCC;
-    margin-bottom: 16px;
-    -webikt-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
+	background: #FFFFFF;
+	-webkit-box-shadow: 1px 1px 2px 0 #CCCCCC;
+	-moz-box-shadow: 1px 1px 2px 0 #CCCCCC;
+	-o-box-shadow: 1px 1px 2px 0 #CCCCCC;
+	-ms-box-shadow: 1px 1px 2px 0 #CCCCCC;
+	box-shadow: 1px 1px 2px 0 #CCCCCC;
+	margin-bottom: 16px;
+	-webikt-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 }
+
 .table a.table-link.danger {
-    color: #e74c3c;
+	color: #e74c3c;
 }
+
 .label {
-    border-radius: 3px;
-    font-size: 0.875em;
-    font-weight: 600;
+	border-radius: 3px;
+	font-size: 0.875em;
+	font-weight: 600;
 }
+
 .user-list tbody td .user-subhead {
-    font-size: 0.875em;
-    font-style: italic;
+	font-size: 0.875em;
+	font-style: italic;
 }
+
 .user-list tbody td .user-link {
-    display: block;
-    font-size: 1.25em;
-    padding-top: 3px;
-    margin-left: 60px;
+	display: block;
+	font-size: 1.25em;
+	padding-top: 3px;
+	margin-left: 60px;
 }
+
 a {
-    color: #3498db;
-    outline: none!important;
+	color: #3498db;
+	outline: none!important;
 }
+
 .user-list tbody td>img {
-    position: relative;
-    max-width: 50px;
-    float: left;
-    margin-right: 15px;
+	position: relative;
+	max-width: 50px;
+	float: left;
+	margin-right: 15px;
 }
 
 .table thead tr th {
-    text-transform: uppercase;
-    font-size: 0.875em;
+	text-transform: uppercase;
+	font-size: 0.875em;
 }
+
 .table thead tr th {
-    border-bottom: 2px solid #e7ebee;
+	border-bottom: 2px solid #e7ebee;
 }
+
 .table tbody tr td:first-child {
-    font-size: 1.125em;
-    font-weight: 300;
+	font-size: 1.125em;
+	font-weight: 300;
 }
+
 .table tbody tr td {
-    font-size: 0.875em;
-    vertical-align: middle;
-    border-top: 1px solid #e7ebee;
-    padding: 12px 8px;
+	font-size: 0.875em;
+	vertical-align: middle;
+	border-top: 1px solid #e7ebee;
+	padding: 12px 8px;
 }
-a:hover{
-text-decoration:none;
+
+a:hover {
+	text-decoration: none;
 }
-.green{
-    color:green;
+
+.green {
+	color: green;
 }
-.gray{
-    color:gray;
+
+.gray {
+	color: gray;
 }
+
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-  }
-  
-  .switch input { 
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  input:checked + .slider {
-    background-color: #2196F3;
-  }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-  }
-  
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-  }
-  .slider.round {
-    border-radius: 34px;
-  }
-  .slider.round:before {
-    border-radius: 50%;
-  }
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 34px;
+}
+
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+
+.slider:before {
+	position: absolute;
+	content: "";
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	background-color: white;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+
+input:checked+.slider {
+	background-color: #2196F3;
+}
+
+input:focus+.slider {
+	box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(26px);
+}
+
+.slider.round {
+	border-radius: 34px;
+}
+
+.slider.round:before {
+	border-radius: 50%;
+}

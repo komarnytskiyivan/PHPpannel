@@ -8,4 +8,4 @@ $config = array(
     )
 );
 require "db.php";
-?> 
+?>
