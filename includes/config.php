@@ -2,9 +2,9 @@
 $config = array(
     'db' => array(
         'server' => 'localhost',
-        'username' => 'root',
-        'password' => 'root',
-        'name' => 'test_panel'
+        'username' => 'z66143eu_dbs',
+        'password' => 'MySql1',
+        'name' => 'z66143eu_dbs'
     )
 );
 require "db.php";

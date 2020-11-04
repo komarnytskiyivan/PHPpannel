@@ -80,3 +80,5 @@ if (isset($_POST['addsolo']))
    </td>
 </tr>
 <?php
+   }
+?>
