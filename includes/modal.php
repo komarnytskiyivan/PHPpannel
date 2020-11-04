@@ -8,11 +8,11 @@
             </button>
          </div>
          <div class="modal-body">
-            <form class="form" method="POST" >
+            <form class="form">
                <div class="form__group">
                   <div class="row">
                      <div class="col-md-6" style = " display:none;">
-                        <input type="text" class="form__control edit-item" name="id" value = ""> 
+                        <input type="text" class="form__control edit-item-id" name="id" value = ""> 
                      </div>
                      <div class="col-md-6" style="margin-top:10px;">
                         <input type="text" class="form__control" required name="name" placeholder="Name"> 
@@ -22,12 +22,12 @@
                      </div>
                      <div class="col-md-6"  style="margin-top:10px;">          
                         <label class="switch">
-                        <input type="checkbox" class="form-control" name="status">
+                        <input type="checkbox" class="form__control" name="status">
                         <span class="slider round"></span>
                         </label>
                      </div>
                      <div class="col-md-6"  style="margin-top:10px;">
-                        <select class="form-control" name="role">
+                        <select class="form__control" name="role">
                            <option>admin</option>
                            <option>user</option>
                         </select>
@@ -36,7 +36,7 @@
                </div>
          </div>
          <div class="modal-footer">
-         <button name="edit_post" type="submit" class="btn btn-primary btn-save-changes btn-modal-add-edit">Save changes</button>
+         <button type="submit" class="btn btn-primary btn-save-changes btn-modal-add-edit" data-dismiss="modal">Save changes</button>
          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
          </div>
          </form>
@@ -57,7 +57,7 @@
             <p class="modal-text">Are you sure want to do this?</p>
          </div>
          <div class="modal-footer">
-            <a href="" class="btn btn-primary btn-save-changes btn-delete-solo">Save changes</a>
+            <a href="" class="btn btn-primary btn-save-changes btn-delete-solo" data-dismiss="modal">Save changes</a>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
          </div>
       </div>

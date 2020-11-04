@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <?php include "./includes/get_post.php"; ?>
       <meta charset="utf-8">
       <title>Panel</title>
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
       <link href="./includes/style.css" rel="stylesheet">
@@ -35,7 +35,7 @@
             <div class="col-lg-12">
                <div class="main-box no-header clearfix">
                   <div class="main-box-body clearfix">
-                     <div class="table-responsive">
+                     <div class="table-responsive ">
                         <table class="table user-list">
                            <thead>
                               <tr>
@@ -46,7 +46,7 @@
                                  <th class="text-center"><span>Options</span></th>
                               </tr>
                            </thead>
-                           <tbody>
+                           <tbody class="table-content">
                               <?php 
                                  $users = mysqli_query($connection,"SELECT * FROM `users` ORDER BY `id` ");
                                  ?>
@@ -72,20 +72,20 @@
                                     <a id="<?php echo $user['id'] ?>" data-toggle="modal" data-target="#ModalAdd" class="table-link text-info edit-item">
                                     <span class="fa-stack">
                                     <i class="fa fa-square fa-stack-2x"></i>
-                                    <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                    <i id="<?php echo $user['id'] ?>" class="fa fa-pencil fa-stack-1x fa-inverse btn-Edit-Submit"></i>
                                     </span>
                                     </a>
-                                    <a id="<?php echo $user['id'] ?>" data-toggle="modal" data-target="#ModalConfirm" class="table-link danger delete-item">
+                                    <a data-toggle="modal" data-target="#ModalConfirm" class="table-link danger delete-item">
                                     <span class="fa-stack">
                                     <i class="fa fa-square fa-stack-2x"></i>
-                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse del"></i>
+                                    <i id="<?php echo $user['id'] ?>" class="fa fa-trash-o fa-stack-1x fa-inverse del btn-Delete-Submit"></i>
                                     </span>
                                     </a>
                                  </td>
                               </tr>
                               <?php
                                  }
-                                 ?>
+                              ?>
                            </tbody>
                         </table>
                      </div>
