@@ -54,7 +54,8 @@ if (isset($_POST['addsolo']))
       <input type="checkbox" id="<?php echo $user['id']?>" name="scales" class="checkout" />
    </td>
    <td>
-      <a href="#" class="user-link"><?php echo $user['name']; ?> <?php echo $user['lastname']; ?></a>
+      <p><?php echo $user['name']; ?> </p>
+      <p> <?php echo $user['lastname']; ?></p>
    </td>
    <td class="text-center">
       <span class="fa-stack">

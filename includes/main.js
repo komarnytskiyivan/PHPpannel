@@ -6,9 +6,24 @@ let ok = document.querySelectorAll('.btn-ok');
 let idItem = document.querySelector('.edit-item-id')
 let select = document.querySelectorAll('.select-action');
 let tableData = document.querySelector('.table-content');
+let title = document.querySelector('.modal-title');
 let arrChecked = [];
+let id = document.querySelector('input[name="id"]')
+let name = document.querySelector('input[name="name"]')
+let lastname = document.querySelector('input[name="lastname"]')
+let status = document.querySelector('input[name="status"]')
+let role = document.querySelector('select[name="role"]')
 document.body.addEventListener('click', function(event) {
     console.log(event.target)
+    if (event.target.classList.contains('checkout')) {
+        let checkers = document.querySelectorAll('.checkout');
+        checkCheckers()
+        console.log(checkers.length)
+        console.log(uniq_fast(arrChecked.split(",")).length)
+        if (checkers.length == uniq_fast(arrChecked.split(",")).length - 1) {
+            checkMain.checked = true;
+        }
+    }
     if (event.target.id == 'scales') {
         let checkers = document.querySelectorAll('.checkout');
         if (checkMain.checked == true) {
@@ -37,6 +52,12 @@ document.body.addEventListener('click', function(event) {
     };
     if (event.target.classList.contains('btn-Edit-Submit')) {
         idItem.value = `${event.target.id}`;
+        name.value = event.target.parentElement.parentElement.parentElement.parentElement.children[1].children[0].textContent
+        lastname.value = event.target.parentElement.parentElement.parentElement.parentElement.children[1].children[1].textContent
+        status.checked = event.target.parentElement.parentElement.parentElement.parentElement.children[2].children[0].children[0].classList.contains('green')
+        role = event.target.parentElement.parentElement.parentElement.parentElement.children[3].children[0].textContent
+        title.textContent = 'Edit row'
+        type.textContent = `Save changes`;
         type.addEventListener('click', (e) => {
             e.preventDefault()
             checkMain.checked = false;
@@ -48,7 +69,6 @@ document.body.addEventListener('click', function(event) {
             bodyFormData.append('status', document.querySelector('.form__control[name="status"]').checked ? 'on' : '');
             bodyFormData.append('role', document.querySelector('.form__control[name="role"]').value);
             bodyFormData.append('editsolo', 1);
-            console.log(1)
             axios({
                 method: 'post',
                 url: './includes/get_post.php',
@@ -65,8 +85,14 @@ document.body.addEventListener('click', function(event) {
     }
 });
 addSolo.forEach(element => {
-    checkMain.checked = false;
     element.addEventListener('click', () => {
+        name.value = ''
+        lastname.value = ''
+        status.checked = false
+        role = ''
+        title.textContent = 'Add row'
+        type.textContent = `Add row`;
+        checkMain.checked = false;
         idItem.value = '';
         console.log(document.querySelector('.form__control[name="status"]').checked)
         type.addEventListener('click', (e) => {
@@ -96,11 +122,16 @@ addSolo.forEach(element => {
 })
 
 for (let i = 0; i < ok.length; i++) {
-    ok[i].addEventListener('click', () => {
-        if (select[i].value == "Delete") {
+    ok[i].addEventListener('click', (ev) => {
+        checkCheckers();
+        console.log(arrChecked.length)
+        if (select[i].value == "Please select" || arrChecked.length == 0) {
+            console.log(ev.target)
+            ev.target.setAttribute('data-toggle', null)
+        } else if (select[i].value == "Delete") {
+            ev.target.setAttribute('data-toggle', 'modal')
             deleteSolo.addEventListener('click', (e) => {
                 e.preventDefault()
-                checkCheckers();
                 checkMain.checked = false;
                 console.log(arrChecked)
                 axios.get(`./includes/get_post.php?deleteMany=${arrChecked}`).then(response => tableData.innerHTML = response.data)
@@ -109,9 +140,9 @@ for (let i = 0; i < ok.length; i++) {
                 once: true
             })
         } else if (select[i].value == "Set active") {
+            ev.target.setAttribute('data-toggle', 'modal')
             deleteSolo.addEventListener('click', (e) => {
                 e.preventDefault();
-                checkCheckers();
                 console.log(arrChecked)
                 checkMain.checked = false;
                 axios.get(`./includes/get_post.php?setActive=${arrChecked}`).then(response => tableData.innerHTML = response.data)
@@ -120,9 +151,9 @@ for (let i = 0; i < ok.length; i++) {
                 once: true
             })
         } else if (select[i].value == "Set not active") {
+            ev.target.setAttribute('data-toggle', 'modal')
             deleteSolo.addEventListener('click', (e) => {
                 e.preventDefault();
-                checkCheckers();
                 console.log(arrChecked)
                 checkMain.checked = false;
                 axios.get(`./includes/get_post.php?setNotActive=${arrChecked}`).then(response => tableData.innerHTML = response.data)
@@ -141,4 +172,19 @@ function checkCheckers() {
             arrChecked += `${check.id},`;
         }
     })
+}
+
+function uniq_fast(a) {
+    var seen = {};
+    var out = [];
+    var len = a.length;
+    var j = 0;
+    for (var i = 0; i < len; i++) {
+        var item = a[i];
+        if (seen[item] !== 1) {
+            seen[item] = 1;
+            out[j++] = item;
+        }
+    }
+    return out;
 }
