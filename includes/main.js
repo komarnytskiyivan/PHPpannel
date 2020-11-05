@@ -13,6 +13,8 @@ let name = document.querySelector('input[name="name"]')
 let lastname = document.querySelector('input[name="lastname"]')
 let status = document.querySelector('input[name="status"]')
 let role = document.querySelector('select[name="role"]')
+let modalText = document.querySelector('.modal-text-confirm')
+let modalTitle = document.querySelector('.modal-title-confirm')
 document.body.addEventListener('click', function(event) {
     console.log(event.target)
     if (event.target.classList.contains('checkout')) {
@@ -42,6 +44,8 @@ document.body.addEventListener('click', function(event) {
         }
     }
     if (event.target.classList.contains('btn-Delete-Submit')) {
+        modalTitle.textContent = "Delete row"
+        modalText.textContent = "Are you sure want to delete this row?"
         deleteSolo.addEventListener('click', (e) => {
             checkMain.checked = false;
             e.preventDefault()
@@ -62,12 +66,12 @@ document.body.addEventListener('click', function(event) {
             e.preventDefault()
             checkMain.checked = false;
             let bodyFormData = new FormData();
-            console.log(document.querySelector('.form__control[name="status"]').value)
-            bodyFormData.append('id', document.querySelector('.form__control[name="id"]').value);
-            bodyFormData.append('name', document.querySelector('.form__control[name="name"]').value);
-            bodyFormData.append('lastname', document.querySelector('.form__control[name="lastname"]').value);
-            bodyFormData.append('status', document.querySelector('.form__control[name="status"]').checked ? 'on' : '');
-            bodyFormData.append('role', document.querySelector('.form__control[name="role"]').value);
+            console.log(document.querySelector('.form-control[name="status"]').value)
+            bodyFormData.append('id', document.querySelector('.form-control[name="id"]').value);
+            bodyFormData.append('name', document.querySelector('.form-control[name="name"]').value);
+            bodyFormData.append('lastname', document.querySelector('.form-control[name="lastname"]').value);
+            bodyFormData.append('status', document.querySelector('.form-control[name="status"]').checked ? 'on' : '');
+            bodyFormData.append('role', document.querySelector('.form-control[name="role"]').value);
             bodyFormData.append('editsolo', 1);
             axios({
                 method: 'post',
@@ -94,16 +98,16 @@ addSolo.forEach(element => {
         type.textContent = `Add row`;
         checkMain.checked = false;
         idItem.value = '';
-        console.log(document.querySelector('.form__control[name="status"]').checked)
+        console.log(document.querySelector('.form-control[name="status"]').checked)
         type.addEventListener('click', (e) => {
             e.preventDefault()
-            console.log(document.querySelector('.form__control[name="status"]').checked)
+            console.log(document.querySelector('.form-control[name="status"]').checked)
             let bodyFormData = new FormData();
             bodyFormData.append('id', '')
-            bodyFormData.append('name', document.querySelector('.form__control[name="name"]').value);
-            bodyFormData.append('lastname', document.querySelector('.form__control[name="lastname"]').value);
-            bodyFormData.append('status', document.querySelector('.form__control[name="status"]').checked ? 'on' : '');
-            bodyFormData.append('role', document.querySelector('.form__control[name="role"]').value);
+            bodyFormData.append('name', document.querySelector('.form-control[name="name"]').value);
+            bodyFormData.append('lastname', document.querySelector('.form-control[name="lastname"]').value);
+            bodyFormData.append('status', document.querySelector('.form-control[name="status"]').checked ? 'on' : '');
+            bodyFormData.append('role', document.querySelector('.form-control[name="role"]').value);
             bodyFormData.append('addsolo', 1);
             axios({
                 method: 'post',
@@ -129,6 +133,8 @@ for (let i = 0; i < ok.length; i++) {
             console.log(ev.target)
             ev.target.setAttribute('data-toggle', null)
         } else if (select[i].value == "Delete") {
+            modalTitle.textContent = "Delete rows"
+            modalText.textContent = "Are you sure want to delete rows?"
             ev.target.setAttribute('data-toggle', 'modal')
             deleteSolo.addEventListener('click', (e) => {
                 e.preventDefault()
@@ -140,6 +146,8 @@ for (let i = 0; i < ok.length; i++) {
                 once: true
             })
         } else if (select[i].value == "Set active") {
+            modalTitle.textContent = "Set active"
+            modalText.textContent = "Are you sure want to set this rows active?"
             ev.target.setAttribute('data-toggle', 'modal')
             deleteSolo.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -151,6 +159,8 @@ for (let i = 0; i < ok.length; i++) {
                 once: true
             })
         } else if (select[i].value == "Set not active") {
+            modalTitle.textContent = "Set not active"
+            modalText.textContent = "Are you sure want to set this rows not active?"
             ev.target.setAttribute('data-toggle', 'modal')
             deleteSolo.addEventListener('click', (e) => {
                 e.preventDefault();
